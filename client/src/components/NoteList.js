@@ -59,9 +59,9 @@ export default function NoteList() {
                     onClick={() => setActiveId(id)}
                   >
                     <Card sx={{ mb: "5px", bgcolor: id === activeId ? "rgb(255 211 140)" : "" }}>
-                      <CardContent sx={{ '&:last-child': { pb: '10px' }, padding: '10px' }}>
+                      <CardContent sx={{ '&:last-child': { pb: '10px' }, padding: '10px', "& p": { m: 0 } }}>
                         <div
-                          style={{ fontSize: "14px", padding: 0, "&p": { padding: 0 } }}
+                          style={{ fontSize: "14px", padding: 0 }}
                           dangerouslySetInnerHTML={{
                             __html: `${content.substring(0, 30) || "Empty"}`
                           }}

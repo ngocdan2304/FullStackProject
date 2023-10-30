@@ -2,7 +2,7 @@ import { createClient } from 'graphql-ws';
 import Env from "../environments";
 
 const client = createClient({
-  url: Env.REACT_APP_GRAPHQL_SUBSCRIPTION_ENDPOINT,
+  url: Env.VITE_GRAPHQL_SUBSCRIPTION_ENDPOINT,
 });
 
 const query = `subscription ReciveNotification {

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Button, Typography } from "@mui/material"
 import { LoginPageStyle } from "./styles";
 import { useNavigate } from "react-router-dom";
-import { ROOT_GLOBAL } from "../../global/root";
+import { ROOT_GLOBAL } from "../../globals/root";
 import { FireBase } from "../../utils/firebase";
 import { LocalStorage } from "../../models/LocalStorage";
 

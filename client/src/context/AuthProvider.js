@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { LocalStorage } from '../models/LocalStorage';
 import { useNavigate } from 'react-router-dom';
-import { ROOT_GLOBAL } from '../global/root';
+import { ROOT_GLOBAL } from '../globals/root';
 import { FireBase } from '../utils/firebase';
 import { CircularProgress } from '@mui/material';
 

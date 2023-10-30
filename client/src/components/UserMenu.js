@@ -4,7 +4,7 @@ import { Avatar, Box, Grid, Menu, MenuItem, Typography, } from '@mui/material';
 import { FireBase } from '../utils/firebase';
 import { LocalStorage } from '../models/LocalStorage';
 import { useNavigate } from 'react-router-dom';
-import { ROOT_GLOBAL } from '../global/root';
+import { ROOT_GLOBAL } from '../globals/root';
 
 
 export default function UserMenu() {

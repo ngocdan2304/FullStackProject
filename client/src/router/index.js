@@ -4,7 +4,7 @@ import LoginPage from '../pages/Login';
 import AuthProvider from '../context/AuthProvider';
 import ProtectedRoute from './ProtectedRoute';
 import ErrorPage from '../pages/ErrorPage';
-import { ROOT_GLOBAL } from '../global/root';
+import { ROOT_GLOBAL } from '../globals/root';
 import NoteList from '../components/NoteList';
 import Note from '../components/Note';
 import { foldersLoader } from '../utils/folderApi';

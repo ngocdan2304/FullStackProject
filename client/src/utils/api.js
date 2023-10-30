@@ -2,7 +2,7 @@ import Env from "../environments";
 import { LocalStorage } from "../models/LocalStorage";
 import { FireBase } from "./firebase";
 
-const GRAPHQL_SERVER = Env.REACT_APP_GRAPHQL_SERVER;
+const GRAPHQL_SERVER = Env.VITE_GRAPHQL_SERVER;
 
 export const graphQLRequest = async (payload, options = {}) => {
   try {

@@ -2,8 +2,7 @@ import React from 'react';
 import UserMenu from './UserMenu';
 import Notification from './Notification';
 import { Box, Container, Grid } from '@mui/material';
-
-const Logo = require("../assets/icons/myLogo.png");
+import Logo from '/src/assets/icons/myLogo.png';
 
 export default function Header() {
   return (

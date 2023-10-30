@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Badge, Menu, MenuItem } from '@mui/material';
 import { NotificationApi } from '../utils/notificationApi';
@@ -17,7 +17,7 @@ export default function Notification() {
     }
   }
 
-  const handleClose = (e) => {
+  const handleClose = () => {
     setAnchorEl(null);
     setNotification('');
     setInvisible(true);

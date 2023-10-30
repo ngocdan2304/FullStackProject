@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { LocalStorage } from '../models/LocalStorage';
-import { ROOT_GLOBAL } from '../global/root';
+import { ROOT_GLOBAL } from '../globals/root';
 
 export default function ProtectedRoute() {
   const navigate = useNavigate();

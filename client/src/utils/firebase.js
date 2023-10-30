@@ -18,13 +18,13 @@ export class FireBase {
   static setUpFirebase() {
     if (this.getHasFirebase()) return;
     const firebaseConfig = {
-      apiKey: Env.REACT_APP_FIREBASE_API_KEY,
-      authDomain: Env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-      projectId: Env.REACT_APP_FIREBASE_PROJECT_ID,
-      storageBucket: Env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-      messagingSenderId: Env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-      appId: Env.REACT_APP_FIREBASE_APP_ID,
-      measurentId: Env.REACT_APP_FIREBASE_MEASURENT_ID
+      apiKey: Env.VITE_FIREBASE_API_KEY,
+      authDomain: Env.VITE_FIREBASE_AUTH_DOMAIN,
+      projectId: Env.VITE_FIREBASE_PROJECT_ID,
+      storageBucket: Env.VITE_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: Env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+      appId: Env.VITE_FIREBASE_APP_ID,
+      measurentId: Env.VITE_FIREBASE_MEASURENT_ID
 
     };
     const app = initializeApp(firebaseConfig);
@@ -59,7 +59,7 @@ export class FireBase {
           typeof callback === "function" && callback();
         }
       })
-      .catch((error) => {
+      .catch(() => {
         if (!auth?.uid) {
           this.signOut();
         }
