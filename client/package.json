@@ -33,6 +33,7 @@
     "file-loader": "^6.2.0",
     "firebase": "^10.5.0",
     "fs-extra": "^10.0.0",
+    "graphql": "^16.8.1",
     "graphql-ws": "^5.14.2",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
