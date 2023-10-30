@@ -39,7 +39,6 @@ export const typeDefs = `#graphql
   }
 
   type Subscription {
-    folderCreated: Message
     notification: Message
   }
 `;

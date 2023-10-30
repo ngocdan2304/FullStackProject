@@ -1,5 +1,5 @@
 import { GraphQLScalarType } from 'graphql';
-import { AuthorModel, FolderModel, NoteModel,NotificationModel } from '../models/index.js';
+import { AuthorModel, FolderModel, NoteModel, NotificationModel } from '../models/index.js';
 import { PubSub } from 'graphql-subscriptions';
 
 const pubsub = new PubSub();
@@ -60,6 +60,11 @@ export const resolvers = {
   Mutation: {
     addNote: async (parent, args) => {
       const newNote = new NoteModel(args);
+      pubsub.publish('NOTE_CREATED', {
+        notification: {
+          message: 'A new note created',
+        },
+      });
       await newNote.save();
       return newNote;
     },
@@ -72,7 +77,7 @@ export const resolvers = {
       const newFolder = new FolderModel({ ...args, authorId: context.uid });
       console.log({ newFolder });
       pubsub.publish('FOLDER_CREATED', {
-        folderCreated: {
+        notification: {
           message: 'A new folder created',
         },
       });
@@ -100,15 +105,12 @@ export const resolvers = {
       });
 
       await newNotification.save();
-      return { message: 'SUCCESS'}
+      return { message: 'SUCCESS' }
     }
   },
   Subscription: {
-    folderCreated: {
-      subscribe: () => pubsub.asyncIterator(['FOLDER_CREATED', 'NOTE_CREATED']),
-    },
     notification: {
-      subscribe: () => pubsub.asyncIterator(['PUSH_NOTIFICATION'])
+      subscribe: () => pubsub.asyncIterator(['PUSH_NOTIFICATION', 'FOLDER_CREATED', 'NOTE_CREATED'])
     }
   },
 };
