@@ -2,12 +2,16 @@ import React, { useContext, useState } from 'react'
 import { AuthContext } from '../context/AuthProvider';
 import { Avatar, Box, Grid, Menu, MenuItem, Typography, } from '@mui/material';
 import { FireBase } from '../utils/firebase';
+import { LocalStorage } from '../models/LocalStorage';
+import { useNavigate } from 'react-router-dom';
+import { ROOT_GLOBAL } from '../global/root';
 
 
 export default function UserMenu() {
   const { user: { displayName, photoURL } } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
   const handleOnLogout = (e) => {
     FireBase.signOut();
@@ -19,7 +23,11 @@ export default function UserMenu() {
   }
 
   const handleOnClick = (e) => {
-    setAnchorEl(e.currentTarget);
+    if (LocalStorage.getUserToken()) {
+      setAnchorEl(e.currentTarget);
+    } else {
+      FireBase.signInWithPopup(() => navigate(ROOT_GLOBAL.HOME));
+    }
   }
 
   return (

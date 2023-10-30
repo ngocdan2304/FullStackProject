@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { ROOT_GLOBAL } from "../../global/root";
 import { FireBase } from "../../utils/firebase";
 import { LocalStorage } from "../../models/LocalStorage";
-import { registerUser } from "../../utils/authApi";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -21,14 +20,7 @@ function LoginPage() {
 
 
   function handleOnClick() {
-    FireBase.signInWithPopup((data) => {
-      const { user: { uid, displayName } } = data;
-      registerUser({
-        uid,
-        name: displayName
-      });
-      navigate(ROOT_GLOBAL.HOME);
-    });
+    FireBase.signInWithPopup(() => navigate(ROOT_GLOBAL.HOME));
   }
 
   if (token) {

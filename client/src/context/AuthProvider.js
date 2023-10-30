@@ -14,7 +14,7 @@ export default function AuthProvider({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const unsubcribed = FireBase.onAuthStateChanged((user) => {
+    const unsubcribed = FireBase.onIdTokenChanged((user) => {
       if (!user?.uid) {
         setUser({});
         LocalStorage.setLoginInfo();
@@ -23,8 +23,11 @@ export default function AuthProvider({ children }) {
         return;
       }
       setUser(user);
-      if (user.accessToken !== LocalStorage.getUserToken()) {
-        LocalStorage.setLoginInfo({ token: user.accessToken, userId: user.uid });
+      const { accessToken, uid } = user;
+      LocalStorage.setLoginInfo({ token: accessToken, userId: uid });
+
+      let token = LocalStorage.getUserToken();
+      if (token && accessToken !== token) {
         window.location.reload();
       }
       setIsLoading(false);
@@ -38,7 +41,7 @@ export default function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
-      {isLoading ? <CircularProgress /> : children}
+      {isLoading ? <CircularProgress sx={{ display: "flex", m: "50px auto" }} /> : children}
     </AuthContext.Provider>
   )
 }

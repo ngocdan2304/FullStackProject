@@ -15,6 +15,6 @@ export const registerUser = async ({ uid, name }) => {
       name: name
     },
   });
-  console.log({ data }, "registerUser")
+  console.log({ data, uid, name }, "registerUser")
   return data;
 };

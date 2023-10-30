@@ -3,6 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import Env from "../environments";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { LocalStorage } from "../models/LocalStorage";
+import { registerUser } from "./authApi";
 
 export class FireBase {
   static _hasFirebase;
@@ -41,21 +42,28 @@ export class FireBase {
     return currentUser;
   }
 
-  static async signInWithPopup(onSuccess = () => { }) {
+  static signInWithPopup(callback = () => { }) {
     let auth = this.getAuth();
-    try {
-      const provider = new GoogleAuthProvider();
-      provider.setCustomParameters({
-        prompt: 'select_account'
-      });
-      const res = await signInWithPopup(auth, provider);
-      console.log({ res, }, "res")
-      typeof onSuccess === "function" && onSuccess(res);
-    } catch (error) {
-      if (!auth?.uid) {
-        this.signOut();
-      }
-    }
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: 'select_account'
+    });
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        if (res?.user) {
+          const { user: { uid, displayName } } = res;
+          registerUser({
+            uid,
+            name: displayName
+          })
+          typeof callback === "function" && callback();
+        }
+      })
+      .catch((error) => {
+        if (!auth?.uid) {
+          this.signOut();
+        }
+      })
   }
 
   static onIdTokenChanged(callback = () => { }) {
