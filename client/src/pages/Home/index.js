@@ -1,3 +1,4 @@
+import React from "react";
 import { HomePageStyle } from "./styles";
 import { Grid, Box } from "@mui/material";
 import FolderList from "../../components/FolderList";

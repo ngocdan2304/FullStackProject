@@ -1,16 +1,18 @@
+import React from "react";
 import { createBrowserRouter, Outlet } from 'react-router-dom';
-import HomePage from '../pages/Home';
-import LoginPage from '../pages/Login';
 import AuthProvider from '../context/AuthProvider';
 import ProtectedRoute from './ProtectedRoute';
-import ErrorPage from '../pages/ErrorPage';
 import { ROOT_GLOBAL } from '../globals/root';
-import NoteList from '../components/NoteList';
-import Note from '../components/Note';
 import { foldersLoader } from '../utils/folderApi';
 import { addNewNote, noteLoader, notesLoader, updateNote } from '../utils/noteApi';
-import Header from '../components/Header';
 import { Container } from '@mui/material';
+
+const HomePage = React.lazy(() => import('../pages/Home'));
+const LoginPage = React.lazy(() => import('../pages/Login'));
+const ErrorPage = React.lazy(() => import('../pages/ErrorPage'));
+const Note = React.lazy(() => import('../components/Note'));
+const NoteList = React.lazy(() => import('../components/NoteList'));
+const Header = React.lazy(() => import('../components/Header'));
 
 function AuthLayout() {
   return (
