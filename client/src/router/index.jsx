@@ -4,15 +4,15 @@ import { ROOT_GLOBAL } from '../globals/root';
 import { foldersLoader } from '../utils/folderApi';
 import { addNewNote, noteLoader, notesLoader, updateNote } from '../utils/noteApi';
 import { Container } from '@mui/material';
-import LoginPage from "../pages/LoginPage";
-import HomePage from "../pages/HomePage/index";
-import ErrorPage from "../pages/ErrorPage/index";
+import Login from "../pages/Login";
+import HomePage from "../pages/HomePage";
+import ErrorPage from "../pages/ErrorPage";
 import AuthProvider from "../context/AuthProvider";
 import ProtectedRoute from "./ProtectedRoute";
 import Header from "../components/Header";
 import NoteList from "../components/NoteList";
 import Note from "../components/Note";
-import ErrorPage1 from "../pages/ErrorPage1";
+import Version from "../pages/version";
 
 // const AuthProvider = React.lazy(() => import('../context/AuthProvider'));
 // const ProtectedRoute = React.lazy(() => import('./ProtectedRoute'));
@@ -37,19 +37,11 @@ function AuthLayout() {
 export default createBrowserRouter([
   {
     element: <AuthLayout />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        element: <LoginPage />,
+        element: <Login />,
         path: ROOT_GLOBAL.LOGIN,
-      },
-      {
-        element: <ErrorPage />,
-        path: "error",
-      },
-      {
-        element: <ErrorPage1 />,
-        path: "error1",
       },
       {
         element: <ProtectedRoute />,
@@ -77,6 +69,7 @@ export default createBrowserRouter([
           }
         ]
       },
+
     ]
-  }
+  },
 ])

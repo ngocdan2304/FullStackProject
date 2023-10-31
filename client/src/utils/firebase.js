@@ -17,19 +17,22 @@ export class FireBase {
 
   static setUpFirebase() {
     if (this.getHasFirebase()) return;
-    const firebaseConfig = {
-      apiKey: Env.VITE_FIREBASE_API_KEY,
-      authDomain: Env.VITE_FIREBASE_AUTH_DOMAIN,
-      projectId: Env.VITE_FIREBASE_PROJECT_ID,
-      storageBucket: Env.VITE_FIREBASE_STORAGE_BUCKET,
-      messagingSenderId: Env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-      appId: Env.VITE_FIREBASE_APP_ID,
-      measurentId: Env.VITE_FIREBASE_MEASURENT_ID
+    try {
+      const firebaseConfig = {
+        apiKey: Env.VITE_FIREBASE_API_KEY,
+        authDomain: Env.VITE_FIREBASE_AUTH_DOMAIN,
+        projectId: Env.VITE_FIREBASE_PROJECT_ID,
+        storageBucket: Env.VITE_FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: Env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+        appId: Env.VITE_FIREBASE_APP_ID,
+        measurentId: Env.VITE_FIREBASE_MEASURENT_ID
 
-    };
-    const app = initializeApp(firebaseConfig);
-    getAnalytics(app);
-    this.setHasFirebase(true);
+      };
+      const app = initializeApp(firebaseConfig);
+      getAnalytics(app);
+      this.setHasFirebase(true);
+
+    } catch (_) { }
   }
 
   static getAuth() {
@@ -38,11 +41,13 @@ export class FireBase {
   }
 
   static getCurrentUser() {
+    if (!this.getHasFirebase()) return;
     let currentUser = this.getAuth().currentUser;
     return currentUser;
   }
 
   static signInWithPopup(callback = () => { }) {
+    if (!this.getHasFirebase()) return;
     let auth = this.getAuth();
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({
@@ -67,18 +72,21 @@ export class FireBase {
   }
 
   static onIdTokenChanged(callback = () => { }) {
+    if (!this.getHasFirebase()) return;
     return this.getAuth().onIdTokenChanged((user) => {
       typeof callback === "function" && callback(user);
     })
   }
 
   static onAuthStateChanged(callback = () => { }) {
+    if (!this.getHasFirebase()) return;
     return this.getAuth().onAuthStateChanged((user) => {
       typeof callback === "function" && callback(user);
     })
   }
 
   static signOut() {
+    if (!this.getHasFirebase()) return;
     this.getAuth().signOut();
     LocalStorage.setLoginInfo();
   }

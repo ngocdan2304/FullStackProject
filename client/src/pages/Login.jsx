@@ -11,7 +11,7 @@ export const LoginPageStyle = styled.div`
   text-align: center;
 `
 
-function LoginPage() {
+function Login() {
   const navigate = useNavigate();
   const token = LocalStorage.getUserToken();
 
@@ -40,4 +40,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default Login;
