@@ -5,7 +5,7 @@ const client = createClient({
   url: Env.VITE_GRAPHQL_SUBSCRIPTION_ENDPOINT,
 });
 
-const query = `subscription ReciveNotification {
+const query = `subscription PushNotification {
   notification {
     message
   }
@@ -13,17 +13,16 @@ const query = `subscription ReciveNotification {
 
 
 export class NotificationApi {
-  static async subscribe() {
-    console.log("VITE_GRAPHQL_SUBSCRIPTION_ENDPOINT", Env.VITE_GRAPHQL_SUBSCRIPTION_ENDPOINT)
-    return await new Promise((resolve, reject) => {
+  static async subscribe({ onNext = () => { }, onError = () => { } }) {
+    await new Promise((resolve, reject) => {
       client.subscribe(
         {
           query,
         },
         {
-          next: (data) => { result = data },
-          error: reject,
-          complete: () => resolve(result),
+          next: (data) => onNext(data),
+          error: (err) => { onError(err); reject(err) },
+          complete: resolve,
         }
       );
     })

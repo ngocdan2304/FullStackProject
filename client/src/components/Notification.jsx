@@ -24,17 +24,18 @@ export default function Notification() {
   }
 
   useEffect(() => {
-    NotificationApi.subscribe()
-      .then(data => onNext(data))
-      .catch(err => console.error(err))
+    NotificationApi.subscribe({
+      onNext,
+      onError: err => console.error(err)
+    })
   }, []);
 
   const onNext = (data) => {
+    console.log('[PUSH NOTIFICATION]', { data });
     setInvisible(false);
 
     const message = data?.data?.notification?.message;
     setNotification(message);
-    console.log('[PUSH NOTIFICATION]', { data });
   };
 
   return (
