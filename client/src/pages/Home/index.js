@@ -1,8 +1,9 @@
 import React from "react";
 import { HomePageStyle } from "./styles";
 import { Grid, Box } from "@mui/material";
-import FolderList from "../../components/FolderList";
 import { Outlet, useLoaderData } from "react-router-dom";
+
+const FolderList = React.lazy(() => import('../../components/FolderList'));
 
 function HomePage() {
   const { folders } = useLoaderData();

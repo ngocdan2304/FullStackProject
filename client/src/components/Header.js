@@ -1,8 +1,9 @@
 import React from 'react';
-import UserMenu from './UserMenu';
-import Notification from './Notification';
 import { Box, Container, Grid } from '@mui/material';
 import Logo from '/src/assets/icons/myLogo.png';
+
+const UserMenu = React.lazy(() => import('./UserMenu'));
+const Notification = React.lazy(() => import('./Notification'));
 
 export default function Header() {
   return (

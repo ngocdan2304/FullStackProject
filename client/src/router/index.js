@@ -1,12 +1,12 @@
 import React from "react";
 import { createBrowserRouter, Outlet } from 'react-router-dom';
-import AuthProvider from '../context/AuthProvider';
-import ProtectedRoute from './ProtectedRoute';
 import { ROOT_GLOBAL } from '../globals/root';
 import { foldersLoader } from '../utils/folderApi';
 import { addNewNote, noteLoader, notesLoader, updateNote } from '../utils/noteApi';
 import { Container } from '@mui/material';
 
+const AuthProvider = React.lazy(() => import('../context/AuthProvider'));
+const ProtectedRoute = React.lazy(() => import('./ProtectedRoute'));
 const HomePage = React.lazy(() => import('../pages/Home'));
 const LoginPage = React.lazy(() => import('../pages/Login'));
 const ErrorPage = React.lazy(() => import('../pages/ErrorPage'));
