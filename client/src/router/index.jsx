@@ -12,7 +12,6 @@ import ProtectedRoute from "./ProtectedRoute";
 import Header from "../components/Header";
 import NoteList from "../components/NoteList";
 import Note from "../components/Note";
-import Version from "../pages/version";
 
 // const AuthProvider = React.lazy(() => import('../context/AuthProvider'));
 // const ProtectedRoute = React.lazy(() => import('./ProtectedRoute'));

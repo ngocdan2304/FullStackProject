@@ -31,8 +31,10 @@ export class FireBase {
       const app = initializeApp(firebaseConfig);
       getAnalytics(app);
       this.setHasFirebase(true);
-
-    } catch (_) { }
+      
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   static getAuth() {
@@ -41,13 +43,11 @@ export class FireBase {
   }
 
   static getCurrentUser() {
-    if (!this.getHasFirebase()) return;
     let currentUser = this.getAuth().currentUser;
     return currentUser;
   }
 
   static signInWithPopup(callback = () => { }) {
-    if (!this.getHasFirebase()) return;
     let auth = this.getAuth();
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({
@@ -72,21 +72,18 @@ export class FireBase {
   }
 
   static onIdTokenChanged(callback = () => { }) {
-    if (!this.getHasFirebase()) return;
     return this.getAuth().onIdTokenChanged((user) => {
       typeof callback === "function" && callback(user);
     })
   }
 
   static onAuthStateChanged(callback = () => { }) {
-    if (!this.getHasFirebase()) return;
     return this.getAuth().onAuthStateChanged((user) => {
       typeof callback === "function" && callback(user);
     })
   }
 
   static signOut() {
-    if (!this.getHasFirebase()) return;
     this.getAuth().signOut();
     LocalStorage.setLoginInfo();
   }
