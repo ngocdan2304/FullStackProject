@@ -10,15 +10,15 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: ['graphql'],
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return id.toString().split('node_modules/')[1].split('/')[0].toString();
-          }
-        }
-      },
+      // output: {
+      //   manualChunks(id) {
+      //     if (id.includes('node_modules')) {
+      //       return id.toString().split('node_modules/')[1].split('/')[0].toString();
+      //     }
+      //   }
+      // },
     },
-    sourcemap: false,
+    // sourcemap: false,
     chunkSizeWarningLimit: 1600,
   },
   optimizeDeps: {
