@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Button, Typography } from "@mui/material"
 import { useNavigate } from "react-router-dom";
-import { ROOT_GLOBAL } from "../../globals/root";
-import { FireBase } from "../../utils/firebase";
-import { LocalStorage } from "../../models/LocalStorage";
+import { ROOT_GLOBAL } from "../globals/root";
+import { FireBase } from "../utils/firebase";
+import { LocalStorage } from "../models/LocalStorage";
 import styled from "@emotion/styled"
 
 export const LoginPageStyle = styled.div`

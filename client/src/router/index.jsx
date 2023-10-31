@@ -4,7 +4,7 @@ import { ROOT_GLOBAL } from '../globals/root';
 import { foldersLoader } from '../utils/folderApi';
 import { addNewNote, noteLoader, notesLoader, updateNote } from '../utils/noteApi';
 import { Container } from '@mui/material';
-import LoginPage from "../pages/LoginPage/index";
+import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage/index";
 import ErrorPage from "../pages/ErrorPage/index";
 import AuthProvider from "../context/AuthProvider";
@@ -37,7 +37,7 @@ function AuthLayout() {
 export default createBrowserRouter([
   {
     element: <AuthLayout />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     children: [
       {
         element: <LoginPage />,

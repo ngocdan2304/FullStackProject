@@ -1,8 +1,12 @@
 import React from "react";
-import { HomePageStyle } from "./styles";
-import { Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Outlet, useLoaderData } from "react-router-dom";
+import styled from "@emotion/styled"
 
+export const HomePageStyle = styled.div`
+  margin: 24px auto;
+  text-align: center;
+`
 const FolderList = React.lazy(() => import('../../components/FolderList'));
 
 function HomePage() {

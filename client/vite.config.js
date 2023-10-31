@@ -19,7 +19,7 @@ export default defineConfig({
       // },
     },
     // sourcemap: false,
-    chunkSizeWarningLimit: 1600,
+    // chunkSizeWarningLimit: 1600,
   },
   // optimizeDeps: {
   //   force: true,
@@ -29,4 +29,10 @@ export default defineConfig({
   //     },
   //   },
   // },
+  onwarn(warning, warn) {
+    if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
+      return
+    }
+    warn(warning)
+  }
 });
