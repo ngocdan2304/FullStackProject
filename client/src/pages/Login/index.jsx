@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Button, Typography } from "@mui/material"
 import { LoginPageStyle } from "./styles";
 import { useNavigate } from "react-router-dom";

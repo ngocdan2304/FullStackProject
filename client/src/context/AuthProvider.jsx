@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { LocalStorage } from '../models/LocalStorage';
 import { useNavigate } from 'react-router-dom';
 import { ROOT_GLOBAL } from '../globals/root';

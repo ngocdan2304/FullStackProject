@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Tooltip, IconButton, Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button } from '@mui/material'
 import { NoteAddOutlined } from '@mui/icons-material';
 import { addNewFolder } from '../utils/folderApi';
