@@ -12,6 +12,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Header from "../components/Header";
 import NoteList from "../components/NoteList";
 import Note from "../components/Note";
+import ErrorPage1 from "../pages/ErrorPage1";
 
 // const AuthProvider = React.lazy(() => import('../context/AuthProvider'));
 // const ProtectedRoute = React.lazy(() => import('./ProtectedRoute'));
@@ -41,6 +42,14 @@ export default createBrowserRouter([
       {
         element: <LoginPage />,
         path: ROOT_GLOBAL.LOGIN,
+      },
+      {
+        element: <ErrorPage />,
+        path: "error",
+      },
+      {
+        element: <ErrorPage1 />,
+        path: "error1",
       },
       {
         element: <ProtectedRoute />,
