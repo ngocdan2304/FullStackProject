@@ -21,12 +21,12 @@ export default defineConfig({
     // sourcemap: false,
     chunkSizeWarningLimit: 1600,
   },
-  optimizeDeps: {
-    force: true,
-    esbuildOptions: {
-      loader: {
-        '.js': 'jsx',
-      },
-    },
-  },
+  // optimizeDeps: {
+  //   force: true,
+  //   esbuildOptions: {
+  //     loader: {
+  //       '.js': 'jsx',
+  //     },
+  //   },
+  // },
 });

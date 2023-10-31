@@ -24,9 +24,9 @@ export default function Notification() {
   }
 
   useEffect(() => {
-    NotificationApi.subscribe({
-      onSuccess: onNext
-    })
+    NotificationApi.subscribe()
+      .then(data => onNext(data))
+      .catch(err => console.error(err))
   }, []);
 
   const onNext = (data) => {

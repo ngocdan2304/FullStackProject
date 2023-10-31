@@ -13,16 +13,17 @@ const query = `subscription ReciveNotification {
 
 
 export class NotificationApi {
-  static async subscribe({ onSuccess = () => { }, onError = () => { } }) {
-    await new Promise((resolve, reject) => {
+  static async subscribe() {
+    console.log("VITE_GRAPHQL_SUBSCRIPTION_ENDPOINT", Env.VITE_GRAPHQL_SUBSCRIPTION_ENDPOINT)
+    return await new Promise((resolve, reject) => {
       client.subscribe(
         {
           query,
         },
         {
-          next: (data) => { typeof onSuccess === "function" && onSuccess(data) },
+          next: (data) => { result = data },
           error: reject,
-          complete: resolve,
+          complete: () => resolve(result),
         }
       );
     })
