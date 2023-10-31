@@ -1,7 +1,7 @@
-# Getting Started with Create Full Stack App
+# Getting Started with Create Full Stack App: Vite + Reactjs + Nodejs
 
 # Client
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App].
 
 ### `npm start`
 
