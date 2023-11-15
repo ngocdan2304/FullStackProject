@@ -161,7 +161,8 @@ nav.navbar.bootsnav {
     color: #d92cf9;
     font-size: 20px;
     font-weight: 600;
-    padding: 33px 0px 57px;
+    /* padding: 33px 0px 57px; */
+    padding: 24px 0;
     text-transform: uppercase;
 }
 
@@ -886,6 +887,10 @@ span.single-timeline-horizontal.spacial-horizontal-line {
 
 .clients-area .item {
     padding: 0 25px;
+}
+
+.clients .clients-area .container {
+    width: 100%;
 }
 
 .clients .clients-area .owl-carousel .owl-stage {
